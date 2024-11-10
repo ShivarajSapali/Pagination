@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Posts } from './posts'
 import Pagination from './pagination';
+import "./App.css";
 function App() {
 
   const [posts, setPosts] = useState([])
@@ -8,10 +9,12 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] =useState(10)
 
+  const url = "https://jsonplaceholder.typicode.com/posts" 
+
   useEffect(()=>{
     const fetchData = async () => {
       setLoading(true)
-      const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+      const res = await fetch(url)
       const data = await res.json()
       setPosts(data)
       setLoading(false)
